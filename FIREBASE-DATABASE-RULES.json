@@ -1,0 +1,29 @@
+{
+  "rules": {
+    "teams": {
+      ".read": true,
+      ".write": true,
+      ".indexOn": ["teamName", "registeredDate"]
+    },
+    "pools": {
+      ".read": true,
+      ".write": true
+    },
+    "fixtures": {
+      ".read": true,
+      ".write": true,
+      ".indexOn": ["pool", "matchNumber"]
+    },
+    "settings": {
+      ".read": true,
+      ".write": true
+    },
+    "liveViewers": {
+      ".read": true,
+      ".write": true,
+      "$sessionId": {
+        ".validate": "newData.hasChildren(['timestamp', 'sessionId'])"
+      }
+    }
+  }
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy to Netlify - LSM Cricket Tournament</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a472a 0%, #2d7a4a 100%);
+            color: white;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            color: #333;
+        }
+        h1 {
+            color: #1a472a;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #2d7a4a;
+            margin: 30px 0 15px 0;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #1a472a;
+            margin: 20px 0 10px 0;
+        }
+        .step {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid #2d7a4a;
+        }
+        .step-number {
+            display: inline-block;
+            background: #2d7a4a;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .button {
+            display: inline-block;
+            background: #2d7a4a;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .button:hover {
+            background: #1a472a;
+            transform: translateY(-2px);
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .center {
+            text-align: center;
+        }
+        .highlight {
+            background: #ffd700;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #1a472a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Quick Deployment Guide</h1>
+        <h2>Lingasamudram Premier League 2026</h2>
+
+        <div class="success">
+            <strong>✅ Your website is ready!</strong> Follow these steps to make it live on the internet.
+        </div>
+
+        <h2>🎯 Fastest Method: Netlify (5 Minutes)</h2>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Create Netlify Account</strong>
+            <ul>
+                <li>Go to: <a href="https://app.netlify.com/signup" target="_blank">https://app.netlify.com/signup</a></li>
+                <li>Sign up with Email, GitHub, or Google (100% FREE)</li>
+                <li>No credit card required!</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Deploy Your Website</strong>
+            <ul>
+                <li>After login, you'll see: "Want to deploy a new site?"</li>
+                <li>Look for the drag & drop area</li>
+                <li><strong>Drag the entire LSM-Cricket-Tournament folder</strong> into the box</li>
+                <li>OR click "Browse to upload" and select the folder</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Wait 30 Seconds</strong>
+            <ul>
+                <li>Netlify will automatically upload and deploy</li>
+                <li>You'll see a progress bar</li>
+                <li>When done, you'll get a URL like: <code>https://random-name-123.netlify.app</code></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>Customize Your URL (Optional)</strong>
+            <ul>
+                <li>Click on "Site settings"</li>
+                <li>Click "Change site name"</li>
+                <li>Enter: <code>lsm-cricket-2026</code> (or any available name)</li>
+                <li>Your new URL: <code>https://lsm-cricket-2026.netlify.app</code></li>
+            </ul>
+        </div>
+
+        <div class="success center">
+            <h3>🎉 Congratulations!</h3>
+            <p>Your website is now LIVE and accessible from anywhere in the world!</p>
+        </div>
+
+        <h2>🔥 Setup Firebase Database (10 Minutes)</h2>
+
+        <div class="warning">
+            <strong>⚠️ Important:</strong> Without Firebase setup, data will only save in the browser. 
+            Set up Firebase so all team registrations are saved in the cloud!
+        </div>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Create Firebase Project</strong>
+            <ul>
+                <li>Go to: <a href="https://console.firebase.google.com" target="_blank">Firebase Console</a></li>
+                <li>Click "Add Project"</li>
+                <li>Name: "LSM Cricket Tournament"</li>
+                <li>Disable Google Analytics</li>
+                <li>Click "Create Project"</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Enable Realtime Database</strong>
+            <ul>
+                <li>Click "Realtime Database" from left menu</li>
+                <li>Click "Create Database"</li>
+                <li>Choose location closest to India</li>
+                <li><strong>Important:</strong> Select "Start in TEST MODE"</li>
+                <li>Click "Enable"</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Set Database Rules</strong>
+            <ul>
+                <li>Click "Rules" tab</li>
+                <li>Replace with this code:</li>
+            </ul>
+            <div class="code-block">
+{
+  "rules": {
+    "teams": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
+            </div>
+            <ul>
+                <li>Click "Publish"</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>Get Firebase Config</strong>
+            <ul>
+                <li>Click ⚙️ (Settings) > Project Settings</li>
+                <li>Scroll to "Your apps"</li>
+                <li>Click Web icon (</>)</li>
+                <li>App name: "LSM Cricket App"</li>
+                <li>Copy the <code>firebaseConfig</code> object</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            <strong>Update script.js</strong>
+            <ul>
+                <li>Open <code>script.js</code> file</li>
+                <li>Find lines 2-10 (firebaseConfig section)</li>
+                <li>Replace with YOUR Firebase config</li>
+                <li>Save the file</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">6</span>
+            <strong>Re-deploy to Netlify</strong>
+            <ul>
+                <li>Go back to Netlify dashboard</li>
+                <li>Click your site</li>
+                <li>Drag the updated folder again to deploy</li>
+                <li>Or click "Deploys" > "Drag and drop your site folder here"</li>
+            </ul>
+        </div>
+
+        <div class="success center">
+            <h3>✅ Complete Setup!</h3>
+            <p>Your website is now fully functional with cloud database!</p>
+        </div>
+
+        <h2>📱 How to Share</h2>
+        <div class="step">
+            <strong>Share your Netlify URL with everyone:</strong>
+            <ul>
+                <li>WhatsApp: Send the link to cricket teams</li>
+                <li>Facebook/Instagram: Post the link</li>
+                <li>SMS: Text the URL to team captains</li>
+            </ul>
+            <p><strong>Example:</strong> "Register for Lingasamudram Premier League 2026! 
+            Visit: https://lsm-cricket-2026.netlify.app"</p>
+        </div>
+
+        <h2>🔐 Admin Access</h2>
+        <div class="step">
+            <strong>To view all registrations:</strong>
+            <ul>
+                <li>Go to your website</li>
+                <li>Username: <span class="highlight">AdminLsm</span></li>
+                <li>Password: <span class="highlight">AdminLSM</span></li>
+                <li>Click "Admin Panel" to see all teams</li>
+            </ul>
+        </div>
+
+        <h2>💰 Cost Breakdown</h2>
+        <div class="success">
+            <ul>
+                <li><strong>Netlify Hosting:</strong> ₹0 (FREE Forever)</li>
+                <li><strong>Firebase Database:</strong> ₹0 (FREE Forever for your usage)</li>
+                <li><strong>Domain:</strong> ₹0 (Free Netlify subdomain)</li>
+                <li><strong>SSL Certificate:</strong> ₹0 (Included)</li>
+                <li><strong>Bandwidth:</strong> ₹0 (Unlimited on free tier)</li>
+            </ul>
+            <h3 class="center">Total Cost: ₹0 🎉</h3>
+        </div>
+
+        <h2>📚 Additional Resources</h2>
+        <div class="center">
+            <a href="https://app.netlify.com" class="button" target="_blank">Deploy to Netlify</a>
+            <a href="https://console.firebase.google.com" class="button" target="_blank">Setup Firebase</a>
+            <a href="DEPLOYMENT-GUIDE.md" class="button">Detailed Guide</a>
+        </div>
+
+        <div class="warning">
+            <strong>💡 Pro Tip:</strong> Test your website locally first by opening <code>index.html</code> 
+            in your browser. Then deploy to Netlify when ready!
+        </div>
+
+        <div class="center" style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #dee2e6;">
+            <p><strong>Need Help?</strong> Check the <code>DEPLOYMENT-GUIDE.md</code> file for detailed step-by-step instructions.</p>
+            <p style="margin-top: 20px; color: #666;">Created for Lingasamudram Premier League 2026 🏏</p>
+        </div>
+    </div>
+</body>
+</html>

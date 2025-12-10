@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingasamudram Premier League 2026</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="login-overlay">
+            <div class="welcome-text">
+                <h1>Welcome to the AI World of Lingasamudram</h1>
+            </div>
+            <div class="login-container">
+                <h2>Lingasamudram Premier League 2026</h2>
+                
+                <form id="loginForm">
+                    <p class="info-text" style="text-align: center; margin-bottom: 15px;">Leave blank for guest access or enter admin credentials</p>
+                    <div class="form-group">
+                        <label>Username (Optional)</label>
+                        <input type="text" id="username" placeholder="Enter username or leave blank">
+                    </div>
+                    <div class="form-group">
+                        <label>Password (Optional)</label>
+                        <input type="password" id="password" placeholder="Enter password or leave blank">
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page">
+        <div class="home-overlay">
+            <header>
+                <h1 class="tournament-title">Lingasamudram Premier League 2026</h1>
+                <div class="viewer-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">👁️</span>
+                        <span class="stat-label">Live Viewers:</span>
+                        <span class="stat-value" id="liveViewersCount">1</span>
+                    </div>
+                </div>
+                <button id="logoutBtn" class="btn-logout">Logout</button>
+            </header>
+            
+            <div class="tournament-info">
+                <div class="info-card">
+                    <h3>Tournament Date</h3>
+                    <p>January 10th, 2026</p>
+                </div>
+                <div class="info-card">
+                    <h3>Entry Fee</h3>
+                    <p>₹1,500</p>
+                </div>
+                <div class="info-card">
+                    <h3>Winner Prize</h3>
+                    <p>₹40,000</p>
+                </div>
+                <div class="info-card">
+                    <h3>Runner-up Prize</h3>
+                    <p>₹20,000</p>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                 <p><strong>For more Information, Please Reach out to Organizers</strong></p>
+                 <p>Organizers:</p>
+                 <ul style="margin-left: 20px;">
+                   <li><strong>Ethish</strong>: <a href="tel:7893319150">7893319150</a></li>
+                   <li><strong>Munisai</strong>: <a href="tel:9550204302">9550204302</a></li>
+                 </ul>
+            </div>
+
+            <div class="main-buttons">
+                <button id="addTeamBtn" class="btn-main">Add New Team</button>
+                <button id="registeredTeamsBtn" class="btn-main">Registered Teams</button>
+                <button id="fixturesBtn" class="btn-main" style="display: none;">Fixtures</button>
+                <button id="scheduleBtn" class="btn-main">Schedule</button>
+                <button id="paymentBtn" class="btn-main">Entry Fee Payment</button>
+                <button id="archivesBtn" class="btn-main">Archives</button>
+                <button id="viewsBtn" class="btn-main">Views</button>
+                <button id="adminPanelBtn" class="btn-main admin-only" style="display: none;">Admin Panel</button>
+                <button id="poolManagementBtn" class="btn-main admin-only" style="display: none;">Pool Management</button>
+            </div>
+
+            <!-- Add Team Form -->
+            <div id="addTeamSection" class="section" style="display: none;">
+                <div class="form-container">
+                    <h2>Register Your Team</h2>
+                    <form id="teamForm">
+                        <div class="form-group">
+                            <label>Team Name *</label>
+                            <input type="text" id="teamName" required>
+                        </div>
+                        
+                        <h3>Add Players (Minimum 11, Maximum 16)</h3>
+                        <div id="playersContainer"></div>
+                        
+                        <div class="form-actions">
+                            <button type="button" id="addPlayerBtn" class="btn-secondary">Add Player</button>
+                            <button type="submit" class="btn-primary">Register Team</button>
+                            <button type="button" id="cancelTeamBtn" class="btn-cancel">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Squad View -->
+            <div id="squadSection" class="section" style="display: none;">
+                <div class="squad-container">
+                    <h2>Registered Teams</h2>
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <button id="teamGridBtn" class="btn-primary">📊 Team Grid</button>
+                        <button id="closeSquadBtn" class="btn-cancel">Close</button>
+                    </div>
+                    <div id="squadList"></div>
+                </div>
+            </div>
+
+            <!-- Fixtures View - Create Matches -->
+            <div id="fixturesSection" class="section" style="display: none;">
+                <div class="fixtures-container">
+                    <h2 id="fixturesTitle">🔧 Create Match Fixtures</h2>
+                    <button id="closeFixturesBtn" class="btn-cancel">Close</button>
+                    
+                    <div id="adminFixtureSpinContainer" style="margin: 30px 0;">
+                        <div class="spin-section" style="text-align: center; padding: 30px; background: linear-gradient(135deg, #1a472a 0%, #2d7a4d 100%); border-radius: 15px; color: white;">
+                            <h3 style="color: white; margin-bottom: 15px;">🎲 Create Random Match</h3>
+                            <p style="color: #e0e0e0; margin-bottom: 20px;">Click the cricket bat to create a new match from available teams</p>
+                            <button id="spinFixtureBtn" class="btn-spin" style="font-size: 3em; padding: 20px 40px; background: #fff; color: #1a472a; border: none; border-radius: 50%; cursor: pointer; transition: all 0.3s;">🏏</button>
+                            <div id="spinResult" style="margin-top: 20px; min-height: 80px;"></div>
+                        </div>
+                    </div>
+
+                    <div id="poolsDisplay"></div>
+                    <div id="fixturesDisplay"></div>
+                </div>
+            </div>
+
+            <!-- Payment Section -->
+            <div id="paymentSection" class="section" style="display: none;">
+                <div class="payment-container">
+                    <h2>Entry Fee Payment</h2>
+                    <button id="closePaymentBtn" class="btn-cancel">Close</button>
+                    
+                    <div class="payment-content">
+                        <div class="payment-info">
+                            <h3>Payment Details</h3>
+                            <p><strong>Entry Fee:</strong> ₹1,500 per team</p>
+                            <p><strong>Payment Method:</strong> UPI</p>
+                        </div>
+                        
+                        <div class="upi-section">
+                            <h3>Pay via UPI</h3>
+                            <div class="upi-id">
+                                <p><strong>UPI ID:</strong></p>
+                                <p class="upi-number">9491843895@ybl</p>
+                                <button class="btn-copy" onclick="copyUPI()">Copy UPI ID</button>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-note">
+                            <h4>⚠️ Important Note:</h4>
+                            <p><strong>Please send the payment screenshot to the Organizers of Lingasamudram Cricket Tournament.</strong></p>
+                            <p>Contact: <a href="tel:9491843895">9491843895</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Archives Section -->
+            <div id="archivesSection" class="section" style="display: none;">
+                <div class="archives-container">
+                    <h2>Archives</h2>
+                    <button id="closeArchivesBtn" class="btn-cancel">Close</button>
+                    
+                    <div class="archives-tabs">
+                        <button class="archive-tab active" data-tab="photos">📸 Photos</button>
+                        <button class="archive-tab" data-tab="videos">🎥 Videos</button>
+                    </div>
+                    
+                    <div id="photosTab" class="archive-content active">
+                        <div id="photosGallery" class="gallery"></div>
+                    </div>
+                    
+                    <div id="videosTab" class="archive-content">
+                        <div id="videosGallery" class="gallery"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Section -->
+            <div id="scheduleSection" class="section" style="display: none;">
+                <div class="schedule-container">
+                    <h2>🏏 Match Schedule</h2>
+                    <button id="closeScheduleBtn" class="btn-cancel">Close</button>
+                    
+                    <div id="scheduleDisplay"></div>
+                </div>
+            </div>
+
+            <!-- Pool Management (Admin Only) -->
+            <div id="poolManagementSection" class="section" style="display: none;">
+                <div class="pool-management-container">
+                    <h2>Pool Management - Drag & Drop Teams</h2>
+                    <button id="closePoolManagementBtn" class="btn-cancel">Close</button>
+                    
+                    <div class="pool-controls">
+                        <button id="savePoolsBtn" class="btn-primary">💾 Save Pools</button>
+                        <button id="releaseSpinBtn" class="btn-success">🎲 Release Fixture Spin</button>
+                        <button id="disableSpinBtn" class="btn-cancel" style="display: none;">🔒 Disable Fixture Spin</button>
+                    </div>
+                    
+                    <div class="pools-layout">
+                        <div class="pool-column">
+                            <h3>Available Teams</h3>
+                            <div id="availableTeams" class="team-drop-zone"></div>
+                        </div>
+                        
+                        <div class="pool-column">
+                            <h3>Pool A</h3>
+                            <div id="poolA" class="team-drop-zone pool-zone"></div>
+                        </div>
+                        
+                        <div class="pool-column">
+                            <h3>Pool B</h3>
+                            <div id="poolB" class="team-drop-zone pool-zone"></div>
+                        </div>
+                        
+                        <div class="pool-column">
+                            <h3>Pool C</h3>
+                            <div id="poolC" class="team-drop-zone pool-zone"></div>
+                        </div>
+                        
+                        <div class="pool-column">
+                            <h3>Pool D</h3>
+                            <div id="poolD" class="team-drop-zone pool-zone"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Panel -->
+            <div id="adminSection" class="section" style="display: none;">
+                <div class="admin-container">
+                    <h2>Admin Panel - All Registrations</h2>
+                    <button id="closeAdminBtn" class="btn-cancel">Close</button>
+                    
+                    <!-- Edit Lock/Unlock Control -->
+                    <div class="edit-control-panel" style="margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <h3>Edit Permission Control</h3>
+                        <p>Control who can edit team registrations:</p>
+                        <button id="toggleEditLockBtn" class="btn-primary" style="margin-top: 10px;">
+                            🔓 Edit Unlocked (Captains can edit)
+                        </button>
+                        <p id="editLockStatus" style="margin-top: 10px; color: #28a745; font-weight: bold;">
+                            Status: Captains can edit their teams
+                        </p>
+                    </div>
+                    
+                    <div id="adminData"></div>
+                </div>
+            </div>
+
+            <!-- Views Section -->
+            <div id="viewsSection" class="section" style="display: none;">
+                <div class="views-container">
+                    <h2>📊 Website Statistics</h2>
+                    <button id="closeViewsBtn" class="btn-cancel">Close</button>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon-large">👁️</div>
+                            <h3>Live Viewers</h3>
+                            <p class="stat-number" id="liveViewersDisplay">0</p>
+                            <span class="stat-desc">Currently on the website</span>
+                        </div>
+                        
+                        <div class="stat-card admin-only" id="totalViewsCard" style="display: none;">
+                            <div class="stat-icon-large">📈</div>
+                            <h3>Total Views</h3>
+                            <p class="stat-number" id="totalViewsDisplay">0</p>
+                            <span class="stat-desc">All-time visitors</span>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon-large">🏏</div>
+                            <h3>Teams Registered</h3>
+                            <p class="stat-number" id="teamsCountDisplay">0</p>
+                            <span class="stat-desc">Total teams</span>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon-large">👥</div>
+                            <h3>Players</h3>
+                            <p class="stat-number" id="playersCountDisplay">0</p>
+                            <span class="stat-desc">Total players registered</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Team Modal -->
+    <div id="editTeamModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Team Registration</h2>
+                <button class="modal-close" onclick="closeEditTeamModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editTeamForm">
+                    <div class="form-group">
+                        <label>Team Name *</label>
+                        <input type="text" id="editTeamName" required>
+                    </div>
+                    
+                    <h3>Edit Players</h3>
+                    <div id="editPlayersContainer"></div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="addEditPlayerBtn" class="btn-secondary">Add Player</button>
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                        <button type="button" class="btn-cancel" onclick="closeEditTeamModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Grid Modal -->
+    <div id="teamGridModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 1000px;">
+            <div class="modal-header">
+                <h2>📊 Teams Overview Grid</h2>
+                <button class="modal-close" onclick="closeTeamGridModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="teamGridContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

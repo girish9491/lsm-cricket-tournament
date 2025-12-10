@@ -1,0 +1,17 @@
+{
+  "name": "lsm-cricket-tournament",
+  "version": "1.0.0",
+  "description": "Lingasamudram Premier League 2026 - Cricket Tournament Registration Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo Open index.html in browser to test locally"
+  },
+  "keywords": [
+    "cricket",
+    "tournament",
+    "registration",
+    "lingasamudram"
+  ],
+  "author": "LSM Cricket Team",
+  "license": "MIT"
+}
