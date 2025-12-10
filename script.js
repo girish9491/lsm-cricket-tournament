@@ -720,16 +720,24 @@ function loadPhotos() {
     photosGallery.innerHTML = '';
     let hasPhotos = false;
     
-    photos.forEach(photo => {
-        const img = new Image();
-        img.src = `${photo}`;
-        img.onload = function() {
-            hasPhotos = true;
-            const item = document.createElement('div');
-            item.className = 'gallery-item';
-            item.innerHTML = `<img src="${photo}" alt="Tournament Photo" onclick="window.open('${photo}', '_blank')">`;
-            photosGallery.appendChild(item);
-        };
+    photos.forEach(photoBase => {
+        const tryExtensions = ['.jpg', '.JPG', '.jpeg', '.JPEG'];
+        let found = false;
+        for (let ext of tryExtensions) {
+            const photo = photoBase.replace(/\.[^.]+$/, ext);
+            const img = new Image();
+            img.src = `${photo}`;
+            img.onload = function() {
+                if (!found) {
+                    found = true;
+                    hasPhotos = true;
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.innerHTML = `<img src="${photo}" alt="Tournament Photo" onclick="window.open('${photo}', '_blank')">`;
+                    photosGallery.appendChild(item);
+                }
+            };
+        }
     });
     
     setTimeout(() => {
@@ -750,16 +758,24 @@ function loadVideos() {
     videosGallery.innerHTML = '';
     let hasVideos = false;
     
-    videos.forEach(video => {
-        const vid = document.createElement('video');
-        vid.src = `${video}`;
-        vid.onloadeddata = function() {
-            hasVideos = true;
-            const item = document.createElement('div');
-            item.className = 'gallery-item';
-            item.innerHTML = `<video src="${video}" controls></video>`;
-            videosGallery.appendChild(item);
-        };
+    videos.forEach(videoBase => {
+        const tryExtensions = ['.mp4', '.MP4', '.mov', '.MOV'];
+        let found = false;
+        for (let ext of tryExtensions) {
+            const video = videoBase.replace(/\.[^.]+$/, ext);
+            const vid = document.createElement('video');
+            vid.src = `${video}`;
+            vid.onloadeddata = function() {
+                if (!found) {
+                    found = true;
+                    hasVideos = true;
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.innerHTML = `<video src="${video}" controls></video>`;
+                    videosGallery.appendChild(item);
+                }
+            };
+        }
     });
     
     setTimeout(() => {
