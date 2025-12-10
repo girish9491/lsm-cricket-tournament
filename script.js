@@ -1586,49 +1586,6 @@ function closeAdminLoginModal() {
     adminLoginModal.style.display = 'none';
     document.getElementById('loginForm').reset();
 }
-        showNotification('Please select at least one captain!', 'error');
-        return;
-    }
-    
-    // Collect player data
-    const players = [];
-    playerEntries.forEach(entry => {
-        const playerName = entry.querySelector('.edit-player-name').value.trim();
-        const mobile = entry.querySelector('.edit-player-mobile').value.trim();
-        const isCaptain = entry.querySelector('.edit-captain-check').checked;
-        
-        players.push({
-            playerName: playerName,
-            mobile: mobile,
-            isCaptain: isCaptain
-        });
-    });
-    
-    const updatedTeam = {
-        teamName: teamName,
-        players: players,
-        entryFee: 1500,
-        updatedAt: new Date().toISOString()
-    };
-    
-    // Save to Firebase or localStorage
-    if (database) {
-        database.ref('teams/' + currentEditTeamId).update(updatedTeam).then(() => {
-            showNotification('Team updated successfully!', 'success');
-            closeEditTeamModal();
-            loadSquadData();
-        }).catch(error => {
-            showNotification('Error updating team: ' + error.message, 'error');
-        });
-    } else {
-        const teams = JSON.parse(localStorage.getItem('teams') || '{}');
-        teams[currentEditTeamId] = { ...teams[currentEditTeamId], ...updatedTeam };
-        localStorage.setItem('teams', JSON.stringify(teams));
-        showNotification('Team updated successfully!', 'success');
-        closeEditTeamModal();
-        loadSquadData();
-    }
-});
 
 // Close modal when clicking outside
 window.addEventListener('click', function(e) {
