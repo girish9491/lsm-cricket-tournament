@@ -77,8 +77,8 @@ let currentUserCaptainMobile = null; // Store current user's captain mobile
 let editLocked = false; // Edit lock status
 
 // Page Navigation
-const loginPage = document.getElementById('loginPage');
 const homePage = document.getElementById('homePage');
+const adminLoginModal = document.getElementById('adminLoginModal');
 
 // Login Form Handler
 document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -1546,31 +1546,46 @@ document.getElementById('addEditPlayerBtn').addEventListener('click', function()
 });
 
 // Save Edited Team
-document.getElementById('editTeamForm').addEventListener('submit', function(e) {
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    const teamName = document.getElementById('editTeamName').value.trim();
-    const playerEntries = document.querySelectorAll('#editPlayersContainer .player-entry');
-    
-    if (playerEntries.length < 11) {
-        showNotification('Minimum 11 players required!', 'error');
-        return;
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    if (username === 'AdminLsm' && password === 'AdminLSM') {
+        isAdmin = true;
+        document.getElementById('adminPanelBtn').style.display = 'inline-block';
+        document.getElementById('poolManagementBtn').style.display = 'inline-block';
+        document.getElementById('fixturesBtn').style.display = 'inline-block';
+        document.getElementById('logoutBtn').style.display = 'inline-block';
+        document.getElementById('adminLoginBtn').style.display = 'none';
+        showNotification('Welcome Admin!', 'success');
+        closeAdminLoginModal();
+    } else {
+        showNotification('Invalid admin credentials. Please try again.', 'error');
     }
-    
-    if (playerEntries.length > 16) {
-        showNotification('Maximum 16 players allowed!', 'error');
-        return;
-    }
-    
-    // Check if at least one captain is selected
-    let hasCaptain = false;
-    playerEntries.forEach(entry => {
-        if (entry.querySelector('.edit-captain-check').checked) {
-            hasCaptain = true;
-        }
-    });
-    
-    if (!hasCaptain) {
+});
+
+document.getElementById('adminLoginBtn').addEventListener('click', function() {
+    openAdminLoginModal();
+});
+
+document.getElementById('logoutBtn').addEventListener('click', function() {
+    isAdmin = false;
+    document.getElementById('adminPanelBtn').style.display = 'none';
+    document.getElementById('poolManagementBtn').style.display = 'none';
+    document.getElementById('fixturesBtn').style.display = 'none';
+    document.getElementById('logoutBtn').style.display = 'none';
+    document.getElementById('adminLoginBtn').style.display = 'inline-block';
+    showNotification('Logged out successfully.', 'success');
+});
+
+function openAdminLoginModal() {
+    adminLoginModal.style.display = 'block';
+}
+function closeAdminLoginModal() {
+    adminLoginModal.style.display = 'none';
+    document.getElementById('loginForm').reset();
+}
         showNotification('Please select at least one captain!', 'error');
         return;
     }
