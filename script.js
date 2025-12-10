@@ -722,12 +722,12 @@ function loadPhotos() {
     
     photos.forEach(photo => {
         const img = new Image();
-        img.src = `archives/photos/${photo}`;
+        img.src = `${photo}`;
         img.onload = function() {
             hasPhotos = true;
             const item = document.createElement('div');
             item.className = 'gallery-item';
-            item.innerHTML = `<img src="archives/photos/${photo}" alt="Tournament Photo" onclick="window.open('archives/photos/${photo}', '_blank')">`;
+            item.innerHTML = `<img src="${photo}" alt="Tournament Photo" onclick="window.open('${photo}', '_blank')">`;
             photosGallery.appendChild(item);
         };
     });
@@ -752,12 +752,12 @@ function loadVideos() {
     
     videos.forEach(video => {
         const vid = document.createElement('video');
-        vid.src = `archives/videos/${video}`;
+        vid.src = `${video}`;
         vid.onloadeddata = function() {
             hasVideos = true;
             const item = document.createElement('div');
             item.className = 'gallery-item';
-            item.innerHTML = `<video src="archives/videos/${video}" controls></video>`;
+            item.innerHTML = `<video src="${video}" controls></video>`;
             videosGallery.appendChild(item);
         };
     });
