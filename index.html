@@ -7,22 +7,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Admin Login Modal -->
-    <div id="adminLoginModal" class="modal" style="display: none;">
-        <div class="modal-content" style="max-width: 400px;">
-            <div class="modal-header">
-                <h2>Admin Login</h2>
-                <button class="modal-close" onclick="closeAdminLoginModal()">&times;</button>
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="login-overlay">
+            <div class="welcome-text">
+                <h1>Welcome to the Lingasamudram Cricket Tournament</h1>
             </div>
-            <div class="modal-body">
+            <div class="login-container">
+                <h2>Lingasamudram Cricket Tournament 2026</h2>
+                
                 <form id="loginForm">
+                    <p class="info-text" style="text-align: center; margin-bottom: 15px;">Leave blank for guest access or enter admin credentials</p>
                     <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" id="username" placeholder="Enter admin username" required>
+                        <label>Username (Optional)</label>
+                        <input type="text" id="username" placeholder="Enter username or leave blank">
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="password" placeholder="Enter admin password" required>
+                        <label>Password (Optional)</label>
+                        <input type="password" id="password" placeholder="Enter password or leave blank">
                     </div>
                     <button type="submit" class="btn-primary">Login</button>
                 </form>
@@ -42,8 +44,7 @@
                         <span class="stat-value" id="liveViewersCount">1</span>
                     </div>
                 </div>
-                <button id="adminLoginBtn" class="btn-main">Admin Login</button>
-                <button id="logoutBtn" class="btn-logout" style="display:none;">Logout</button>
+                <button id="logoutBtn" class="btn-logout">Logout</button>
             </header>
             
             <div class="tournament-info">
